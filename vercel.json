@@ -1,5 +1,7 @@
 {
   "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "builds": [
     { "src": "server/index.js", "use": "@vercel/node" },
     { "src": "dist/**/*", "use": "@vercel/static" }
@@ -9,4 +11,3 @@
     { "src": "/(.*)", "dest": "/dist/index.html" }
   ]
 }
-

@@ -13,6 +13,8 @@ import { ProjectionSection } from "../components/ProjectsSection";
 import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
 
+
+
 const Home = () => {
   return (
     <div className = "min-h-screen bg-background text-foregroud overflow-x-hidden">
@@ -24,6 +26,8 @@ const Home = () => {
       <HeroSection />
       <AboutSection />
       <SkillsSection />
+     
+    
       <ProjectionSection />
       <ContactSection />
       <Footer />

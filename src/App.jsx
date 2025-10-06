@@ -5,6 +5,7 @@ import './App.css'
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import  Home  from "./pages/Home";
+import  AdminPage  from './components/Admin_page';
 import  NotFound  from "./pages/NotFound";
 //import { Toaster } from "@/components/ui/toaster";
 
@@ -14,6 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
+              <Route path="/admin" element={<AdminPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

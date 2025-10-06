@@ -1,6 +1,7 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import { useEffect,useState } from "react";
 
-const projects = [    
+{/*const projects = [    
         {
         id: 2,
         title: "Hero Section with AI Content Generator",
@@ -47,9 +48,44 @@ const projects = [
         demoUrl: "#",
         githubUrl: "#"
     },
-];
+];*/}
 
 export const ProjectionSection = () => {
+    const [projects,setProjects] = useState([]);
+    const handleDelete = async (id) => {
+  try {
+    const token = "MY_SECRET_TOKEN"; // نفس التوكن اللي في الباك اند
+    const res = await fetch(`http://localhost:5000/api/projects/${id}`, {
+      method: "DELETE",
+      headers: { token }
+    });
+    if (res.ok) {
+      setProjects(prev => prev.filter(p => p._id !== id));
+      alert("تم حذف المشروع!");
+    } else {
+      alert("حدث خطأ أثناء الحذف");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("حدث خطأ أثناء الحذف");
+  }
+};
+useEffect(() => {
+    fetch("http://localhost:5000/api/projects")
+      .then((res) => res.json())
+      .then((data) => {
+          // لو البيانات مش array نخليها array فاضية
+          if (!Array.isArray(data)) {
+              setProjects([]);
+          } else {
+              setProjects(data);
+          }
+      })
+      .catch((err) => console.error("Error fetching projects:", err));
+}, []);
+    const validProjects = projects.filter(
+      project => project.title && project.description && project.image
+    );
     return (
         <section id="projects" className="py-24 px-4 relative">
             <div className="container mx-auto max-w-5xl">
@@ -60,7 +96,7 @@ export const ProjectionSection = () => {
                     Here are some of my recent projects. Each project was carefully crafted with attention to detail, performance, and user experience.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, key) => (
+                    {validProjects?.map((project, key) => (
                         <div key={key} className="ground bg-card rounded-lg overflow-hidden shadow-xs card-hover">
                             <div className="h-48 overflow-hidden">
                                 <img
@@ -71,7 +107,7 @@ export const ProjectionSection = () => {
                             </div>
                             <div className="p-6">
                                 <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.tags.map((tag, idx) => (
+                                    {project.tags && project.tags.length > 0 && project.tags.map((tag, idx) => (
                                         <span
                                             key={idx}
                                             className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground"

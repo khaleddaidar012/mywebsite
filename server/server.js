@@ -17,7 +17,7 @@ cloudinary.config({
 });
 
 // Multer لتخزين مؤقت قبل الرفع
-const upload = multer({ dest: 'temp/' });
+const upload = multer({ dest: '/tmp/' });
 
 app.use(cors());
 app.use(express.json());

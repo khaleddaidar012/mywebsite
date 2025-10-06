@@ -16,8 +16,22 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Multer لتخزين مؤقت قبل الرفع
-const upload = multer({ dest: '/tmp/' });
+// ✅ Multer باستخدام مجلد /tmp
+const tempDir = '/tmp/uploads';
+if (!fs.existsSync(tempDir)) {
+  fs.mkdirSync(tempDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, tempDir);
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+
+const upload = multer({ storage });
 
 app.use(cors());
 app.use(express.json());
@@ -51,7 +65,7 @@ app.post("/api/projects", upload.single('image'), async (req, res) => {
     if (req.file) {
       const result = await cloudinary.uploader.upload(req.file.path, { folder: "projects" });
       imageUrl = result.secure_url;
-      fs.unlinkSync(req.file.path); // حذف الصورة المؤقتة
+      fs.unlinkSync(req.file.path); // حذف الصورة المؤقتة بعد الرفع
     }
 
     const parsedTags = tags ? JSON.parse(tags) : [];
@@ -97,6 +111,8 @@ app.delete("/api/projects/:id", async (req, res) => {
     res.status(500).json({ message: "Could not delete project" });
   }
 });
+
+
 import path from "path";
 import { fileURLToPath } from "url";
 

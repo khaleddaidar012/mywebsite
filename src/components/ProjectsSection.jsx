@@ -24,7 +24,7 @@ const initialProjects  = [
         title: "Coffee Shop Website",
         description: "Responsive coffee shop website design",
         image: "/1.PNG",
-        tags: ["React",,"CSS"],
+        tags: ["React","CSS"],
         demoUrl: "https://khaleddaidar012.github.io/Shop_coffe/",
         githubUrl: "https://github.com/khaleddaidar012/Shop_coffe"
     },
@@ -105,8 +105,8 @@ export const ProjectionSection = () => {
                     Here are some of my recent projects. Each project was carefully crafted with attention to detail, performance, and user experience.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {validProjects?.map((project, key) => (
-                        <div key={key} className="ground bg-card rounded-lg overflow-hidden shadow-xs card-hover">
+                    {validProjects?.map((project, idx) => (
+                        <div key={idx} className="ground bg-card rounded-lg overflow-hidden shadow-xs card-hover">
                             <div className="h-48 overflow-hidden">
                                 <img
                                     src={project.image}

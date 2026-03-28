@@ -1,7 +1,7 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { useEffect,useState } from "react";
 
-{const projects = [    
+const initialProjects  = [    
         {
         id: 2,
         title: "Hero Section with AI Content Generator",
@@ -16,7 +16,7 @@ import { useEffect,useState } from "react";
         description: "A simple app to add, edit, and delete tasks easily",
         image: "/3.PNG",
         tags: ["React", "TailwindCSS", "Node.js", "Express", "MongoDB"],
-        demoUrl: "https://khaleddaidar012.github.io/Shop_coffe/",
+        demoUrl: "https://github.com/khaleddaidar012/Task_manger",
         githubUrl: "https://github.com/khaleddaidar012/Task_manger"
     },
     {
@@ -35,8 +35,8 @@ import { useEffect,useState } from "react";
         description: "A basic implementation of JWT authentication for secure user login and protected routes",
         image: "/4.PNG",
         tags: ["React", "TailwindCSS", "Node.js", "Express", "MongoDB"],
-        demoUrl: "https://khaleddaidar012.github.io/Shop_coffe/",
-        githubUrl: "https://github.com/khaleddaidar012/Shop_coffe"
+        demoUrl: "#",
+        githubUrl: "https://github.com/khaleddaidar012/Basic_JWT"
     },
 
     {
@@ -57,11 +57,11 @@ import { useEffect,useState } from "react";
         demoUrl: "https://computer-store3.pages.dev/",
         githubUrl: "https://github.com/khaleddaidar012/computer_store"
     }
-];}
+];
 
 export const ProjectionSection = () => {
-    const [projects,setProjects] = useState(projects);
-    const handleDelete = async (id) => {
+    const [projects,setProjects] = useState(initialProjects );
+    /*const handleDelete = async (id) => {
   try {
     const token = "MY_SECRET_TOKEN"; // نفس التوكن اللي في الباك اند
     const res = await fetch(`http://localhost:5000/api/projects/${id}`, {
@@ -78,7 +78,7 @@ export const ProjectionSection = () => {
     console.error(err);
     alert("حدث خطأ أثناء الحذف");
   }
-};
+};*/
 /*useEffect(() => {
     fetch("http://localhost:5000/api/projects")
       .then((res) => res.json())

@@ -1,7 +1,7 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { useEffect,useState } from "react";
 
-{/*const projects = [    
+{const projects = [    
         {
         id: 2,
         title: "Hero Section with AI Content Generator",
@@ -48,10 +48,19 @@ import { useEffect,useState } from "react";
         demoUrl: "#",
         githubUrl: "#"
     },
-];*/}
+    {
+        id: 6,
+        title: "Computer Landing page",
+        description: "modern computer landing page",
+        image: "/6.PNG",
+        tags: ["Vibe Coding" ,"CSS" ],
+        demoUrl: "https://computer-store3.pages.dev/",
+        githubUrl: "https://github.com/khaleddaidar012/computer_store"
+    }
+];}
 
 export const ProjectionSection = () => {
-    const [projects,setProjects] = useState([]);
+    const [projects,setProjects] = useState(projectsData);
     const handleDelete = async (id) => {
   try {
     const token = "MY_SECRET_TOKEN"; // نفس التوكن اللي في الباك اند
@@ -70,7 +79,7 @@ export const ProjectionSection = () => {
     alert("حدث خطأ أثناء الحذف");
   }
 };
-useEffect(() => {
+/*useEffect(() => {
     fetch("http://localhost:5000/api/projects")
       .then((res) => res.json())
       .then((data) => {
@@ -82,7 +91,7 @@ useEffect(() => {
           }
       })
       .catch((err) => console.error("Error fetching projects:", err));
-}, []);
+}, []);*/
     const validProjects = projects.filter(
       project => project.title && project.description && project.image
     );

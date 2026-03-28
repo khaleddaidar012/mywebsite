@@ -60,7 +60,7 @@ import { useEffect,useState } from "react";
 ];}
 
 export const ProjectionSection = () => {
-    const [projects,setProjects] = useState(projectsData);
+    const [projects,setProjects] = useState(projects);
     const handleDelete = async (id) => {
   try {
     const token = "MY_SECRET_TOKEN"; // نفس التوكن اللي في الباك اند

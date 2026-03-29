@@ -7,7 +7,7 @@ const initialProjects  = [
         id: 7,
         title: " Landing page",
         description: "modern  landing page",
-        image: "/6.PNG",
+        image: "/7.PNG",
         tags: ["react" ,"CSS" ,"git","github","cloudflare"],
         demoUrl: "https://landingpage1.khaledhesham012.workers.dev/",
         githubUrl: "https://github.com/khaleddaidar012/landing_page_1"

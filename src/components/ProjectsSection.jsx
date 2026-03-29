@@ -2,7 +2,34 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { useEffect,useState } from "react";
 
 const initialProjects  = [    
-        {
+  
+    {
+        id: 7,
+        title: " Landing page",
+        description: "modern  landing page",
+        image: "/6.PNG",
+        tags: ["react" ,"CSS" ,"git","github","cloudflare"],
+        demoUrl: "https://landingpage1.khaledhesham012.workers.dev/",
+        githubUrl: "https://github.com/khaleddaidar012/landing_page_1"
+    },
+    {
+        id: 8,
+        title: "  Ev-olution Landing page",
+        description: "Ev-olution landing page",
+        image: "/8.PNG",
+        tags: ["react" ,"CSS" ,"git","github","cloudflare"],
+        demoUrl: "https://landigpage3.khaledhesham012.workers.dev/",
+        githubUrl: "https://github.com/khaleddaidar012/landing_page_3"
+    },
+    {
+        id: 9,
+        title: "  Food show Landing page",
+        description: "Food show landing page",
+        image: "/9.PNG",
+        tags: ["react" ,"CSS" ,"git","github","cloudflare"],
+        demoUrl: "https://landigpage4.khaledhesham012.workers.dev/",
+        githubUrl: "https://github.com/khaleddaidar012/landing_page_4"
+    },      {
         id: 2,
         title: "Hero Section with AI Content Generator",
         description: "Hero section challenge solution for an interview process",
@@ -56,34 +83,7 @@ const initialProjects  = [
         tags: ["Vibe Coding" ,"CSS" ],
         demoUrl: "https://computer-store3.pages.dev/",
         githubUrl: "https://github.com/khaleddaidar012/computer_store"
-    },
-    {
-        id: 7,
-        title: " Landing page",
-        description: "modern  landing page",
-        image: "/6.PNG",
-        tags: ["react" ,"CSS" ,"git","github","cloudflare"],
-        demoUrl: "https://landingpage1.khaledhesham012.workers.dev/",
-        githubUrl: "https://github.com/khaleddaidar012/landing_page_1"
-    },
-    {
-        id: 8,
-        title: "  Ev-olution Landing page",
-        description: "Ev-olution landing page",
-        image: "/8.PNG",
-        tags: ["react" ,"CSS" ,"git","github","cloudflare"],
-        demoUrl: "https://landigpage3.khaledhesham012.workers.dev/",
-        githubUrl: "https://github.com/khaleddaidar012/landing_page_3"
-    },
-    {
-        id: 9,
-        title: "  Food show Landing page",
-        description: "Food show landing page",
-        image: "/9.PNG",
-        tags: ["react" ,"CSS" ,"git","github","cloudflare"],
-        demoUrl: "https://landigpage4.khaledhesham012.workers.dev/",
-        githubUrl: "https://github.com/khaleddaidar012/landing_page_4"
-    },
+    }
 ];
 
 export const ProjectionSection = () => {

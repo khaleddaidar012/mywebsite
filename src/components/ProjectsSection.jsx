@@ -84,6 +84,17 @@ const initialProjects  = [
         demoUrl: "https://computer-store3.pages.dev/",
         githubUrl: "https://github.com/khaleddaidar012/computer_store"
     }
+    ,
+    {
+        id: 10,
+        title: "Task tracker with Ai integration",
+        description: "Task tracker with Ai integration to help you manage your tasks more efficiently",
+        image: "/10.PNG",
+        tags: ["Vibe Coding" ,"CSS","git","github","cloudflare","Ai integration" ],
+        demoUrl: "https://task-tracker-3pu7.vercel.app/login",
+        githubUrl: "https://github.com/khaleddaidar012/task-tracker",
+        featured: true
+    }
 ];
 
 export const ProjectionSection = () => {
@@ -141,6 +152,12 @@ export const ProjectionSection = () => {
                                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
                             </div>
+                            {/* ⭐ نجمة المشروع المميز */}
+ {project.featured && (
+    <div className="absolute top-3 right-3 bg-yellow-400 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md z-50">
+      ⭐ 
+    </div>
+  )}
                             <div className="p-6">
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {project.tags && project.tags.length > 0 && project.tags.map((tag, idx) => (

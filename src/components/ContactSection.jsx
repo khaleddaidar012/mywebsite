@@ -28,8 +28,8 @@ export const ContactSection = () => {
     setIsSubmitting(true);
 
     emailjs.send(
-      "service_d43zf4v",
-      "template_d2e6qlf",
+      "service_ygsa06w",
+      "template_5vhw5fs",
       formData,
       "AZ8eazlqCTtDWi8p4"
     )

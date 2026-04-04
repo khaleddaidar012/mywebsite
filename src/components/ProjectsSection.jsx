@@ -130,9 +130,9 @@ export const ProjectionSection = () => {
       })
       .catch((err) => console.error("Error fetching projects:", err));
 }, []);*/
-    const validProjects = projects.filter(
-      project => project.title && project.description && project.image
-    );
+   const validProjects = projects
+  .filter(project => project.title && project.description && project.image)
+  .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0)); // المميز يجي أولًا
     return (
         <section id="projects" className="py-24 px-4 relative">
             <div className="container mx-auto max-w-5xl">
@@ -144,57 +144,59 @@ export const ProjectionSection = () => {
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {validProjects?.map((project, idx) => (
-                        <div key={idx} className="ground bg-card rounded-lg overflow-hidden shadow-xs card-hover">
-                            <div className="h-48 overflow-hidden">
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                />
-                            </div>
-                            {/* ⭐ نجمة المشروع المميز */}
- {project.featured && (
-    <div className="absolute top-3 right-3 bg-yellow-400 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md z-50">
-      ⭐ 
+                       <div key={idx} className="ground bg-card rounded-lg shadow-xs card-hover relative">
+    {/* ⭐ نجمة المشروع المميز */}
+    {project.featured && (
+        <div className="absolute top-3 right-3 bg-yellow-400 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md z-50">
+            ⭐ Featured
+        </div>
+    )}
+
+    <div className="h-48 overflow-hidden rounded-t-lg">
+        <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
     </div>
-  )}
-                            <div className="p-6">
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.tags && project.tags.length > 0 && project.tags.map((tag, idx) => (
-                                        <span
-                                            key={idx}
-                                            className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
-                                <p className="text-muted-foreground text-sm mb-4">
-                                    {project.description}
-                                </p>
-                                <div className="flex justify-between items-center">
-                                    <div className="flex space-x-3">
-                                        <a
-                                            href={project.demoUrl}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                        >
-                                            <ExternalLink size={20} />
-                                        </a>
-                                        <a
-                                            href={project.githubUrl}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                        >
-                                            <Github size={20} />
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+    <div className="p-6">
+        <div className="flex flex-wrap gap-2 mb-4">
+            {project.tags && project.tags.length > 0 && project.tags.map((tag, idx) => (
+                <span
+                    key={idx}
+                    className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground"
+                >
+                    {tag}
+                </span>
+            ))}
+        </div>
+        <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
+        <p className="text-muted-foreground text-sm mb-4">
+            {project.description}
+        </p>
+        <div className="flex justify-between items-center">
+            <div className="flex space-x-3">
+                <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                >
+                    <ExternalLink size={20} />
+                </a>
+                <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                >
+                    <Github size={20} />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
                     ))}
                 </div>
                 <div className="text-center mt-12">
